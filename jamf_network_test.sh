@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
-# jamf_network_test.sh
-# Tests network connectivity for Jamf Pro and (optionally) Apple services,
-# then generates a self-contained HTML report.
+
+# Name        - jamf_network_test.sh
+# Author      - MDM Magic
+# Description - ests network connectivity for Jamf Pro and (optionally) Apple services, then generates a self-contained HTML report.
+# Version     - 1.0
+# Date        - 2026-06-19
+
 #
 # Usage:
 #   ./jamf_network_test.sh [--apple] [--output FILE] [--timeout SECS] [--verbose]

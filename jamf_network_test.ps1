@@ -1,7 +1,11 @@
 <#
-jamf_network_test.ps1
-Tests network connectivity for Jamf Pro and (optionally) Apple services on Windows,
-then generates a self-contained HTML report. Windows counterpart of jamf_network_test.sh.
+
+Name        - jamf_network_test.ps1
+Author      - MDM Magic
+Description - Tests network connectivity for Jamf Pro and (optionally) Apple services on Windows,
+then generates a self-contained HTML report.
+Version     - 1.0
+Date        - 2026-06-19
 
 Usage:
   .\jamf_network_test.ps1 [-Apple] [-OutputFile <path>] [-TimeoutSec <int>] [-VerboseOutput]
