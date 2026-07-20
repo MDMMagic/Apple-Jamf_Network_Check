@@ -124,3 +124,7 @@ If you see failures, compare reports from a Mac and a Windows PC on the same net
 - [Jamf Pro Network Ports](https://learn.jamf.com/r/en-US/technical-articles/Network_Ports_Used_by_Jamf_Pro)
 - [Jamf IP Address List](https://learn.jamf.com/r/en-US/jamf-ip-address-list/Permitting_InboundOutbound_Traffic_with_Jamf)
 - [Apple Network Requirements for MDM](https://support.apple.com/en-gb/101555)
+
+---
+
+<a href="https://buymeacoffee.com/mdmmagic" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
