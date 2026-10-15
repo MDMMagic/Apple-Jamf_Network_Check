@@ -11,6 +11,8 @@ Scripts that test TCP (and UDP) connectivity to every host required by Jamf Pro 
 | Option | Default | Description |
 |---|---|---|
 | `--apple` | off | Also run full Apple network requirement tests |
+| `--microsoft` | off | Also test every Microsoft 365 / Intune endpoint (read live from endpoints.office.com) |
+| `--google` | off | Also test Google Workspace, Android Enterprise and Chrome Enterprise hosts |
 | `--output FILE` | `jamf_network_report_<timestamp>.html` | Path for the HTML report |
 | `--timeout SECS` | `5` | Per-connection timeout |
 | `--verbose` | off | Print each result to stdout as it runs |
@@ -37,6 +39,8 @@ Scripts that test TCP (and UDP) connectivity to every host required by Jamf Pro 
 | Option | Default | Description |
 |---|---|---|
 | `-Apple` | off | Also run full Apple network requirement tests |
+| `-Microsoft` | off | Also test every Microsoft 365 / Intune endpoint (read live from endpoints.office.com) |
+| `-Google` | off | Also test Google Workspace, Android Enterprise and Chrome Enterprise hosts |
 | `-OutputFile <path>` | `jamf_network_report_<timestamp>.html` | Path for the HTML report |
 | `-TimeoutSec <int>` | `5` | Per-connection timeout |
 | `-VerboseOutput` | off | Print each result to the console as it runs |
@@ -85,8 +89,9 @@ Both scripts write the same self-contained HTML report and attempt to open it au
 
 - Summary cards (total / pass / fail / warn)
 - Connectivity score progress bar
-- Per-host results table with latency, status badge, and failure notes
-- Recommendations panel (appears when failures are detected)
+- One collapsible section per category (collapsed by default, with its pass/fail/warn counts in the header; **Expand all** / **Collapse all** buttons, and everything expands when printed), each listing hosts with latency, status badge, and failure notes
+- Recommendations panel (appears when failures are detected; collapsible)
+- Collapsible tables of the published Jamf, Microsoft 365 and Google IP ranges
 
 Results are colour-coded: green for pass, red for fail, amber for warn (UDP tests).
 
@@ -105,11 +110,11 @@ If you see failures, compare reports from a Mac and a Windows PC on the same net
 **macOS / Linux** (`jamf_network_test.sh`)
 - `nc` (netcat) — available by default on macOS
 - `nslookup` or `host` for DNS resolution checks
-- `python3` — used as fallback for millisecond timing on macOS (standard on macOS 12+)
+- `python3` — used for IP range matching, JSON parsing and millisecond timing. On macOS it comes with the Xcode Command Line Tools; if they're missing the script installs them automatically via `softwareupdate` (runs `sudo` when not root; pass `--no-install` to skip). If the install fails, the python3-based checks are skipped.
 
 **Windows** (`jamf_network_test.ps1`)
 - Windows PowerShell 5.1+ or PowerShell 7+
-- No third-party modules — uses .NET's `TcpClient`/`UdpClient` and `System.Net.Dns` directly
+- No third-party modules — uses .NET's `TcpClient`/`UdpClient` and `System.Net.Dns` directly, and `Invoke-WebRequest` for the live Jamf, Apple, Microsoft, Azure and Google lists
 
 ## Notes
 
